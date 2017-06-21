@@ -1,0 +1,145 @@
+@import '_components/index.css';
+
+$blue: #056ef0;
+$column: 200px;
+
+@define-mixin icon $name {
+    padding-left: 16px;
+
+    &::after {
+        content: "";
+        background-url: url('/icons/$name.png');
+    }
+}
+
+@define-extend bg-green {
+    background: green;
+}
+
+@define-extend bg-yellow {
+    background: yellow;
+}
+
+.search {
+    @mixin icon search;
+    @extend bg-green;
+    color: $blue;
+}
+
+.menu {
+    background: color($blue blackness(20%));
+    width: calc(4 * $column);
+}
+
+.notice {
+    @if 3 < 5 {
+        color: green;
+    } @else {
+        color: yellow;
+    }
+}
+
+@for $i from 10 to 30 by 10 {
+    .col-$i { width: $i%; }
+}
+
+
+@each $icon in (foo, bar, baz) {
+    .icon-$(icon) {
+        background-url: url('/icons/$name.png');
+    }
+}
+
+@define-mixin ja {
+    html[lang="ja"] & {
+        @mixin-content;
+    }
+}
+
+body {
+    background-color: red;
+    @mixin ja {
+        background-color: blue;
+    }
+}
+
+.parent {
+    background: white;
+
+    @at-root{
+        .child {
+            background: black;
+        }
+    }
+    .child {
+        background: black;
+    }
+    &__child {
+        background: black;
+    }
+    &__element {
+        background: black;
+
+        &--modifier {
+            background: black;
+        }
+    }
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 60px;
+}
+h1 {
+  @extend .heading;
+}
+
+
+.phone {
+    &_title {
+        width: 500px;
+        @media (max-width: 500px) {
+            width: auto;
+        }
+        body.is_dark & {
+            color: white;
+        }
+    }
+    img {
+        display: block;
+    }
+}
+
+@media (min-width: 640px) {
+  .foo {
+    width: 300px;
+  }
+}
+
+.content {
+    padding: 18px;
+    width: 400px;
+    border: solid 4px block;
+    height: 300px;
+    font-size: 40px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.testcomb {
+    font-size: 14px;
+    line-height: 1.6;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: red;
+    color: blue;
+    top: 2px;
+    background: white;
+    border: none;
+    background: none;
+    position: relative;
+    bottom: 4px;
+    margin: 4px 2px 4px 2px;
+    padding: 0;
+    border-radius: 3px;
+}
