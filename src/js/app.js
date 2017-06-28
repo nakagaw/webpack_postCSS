@@ -1,6 +1,5 @@
 // このファイルからの相対パスで、css を import をする
-// import './app.scss';
-import './app_via_postcss.css';
+import '../css/app.css';
 
 // js
 // const root = document.querySelector('#root')

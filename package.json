@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --watch",
+    "serve": "webpack-dev-server",
     "build": "webpack -p"
   },
   "keywords": [],
@@ -21,15 +22,17 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "node-sass": "^4.5.3",
     "postcss": "^6.0.2",
-    "postcss-csscomb": "^1.0.2",
     "postcss-flexbugs-fixes": "^3.0.0",
     "postcss-loader": "^2.0.5",
+    "postcss-reporter": "^4.0.0",
     "precss": "^1.4.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "stylefmt": "^6.0.0",
     "stylefmt-loader": "^1.2.3",
-    "stylelint-webpack-plugin": "^0.7.0",
-    "webpack": "^2.6.1"
+    "stylelint": "^7.11.1",
+    "stylelint-scss": "^1.4.4",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   }
 }

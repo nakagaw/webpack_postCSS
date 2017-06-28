@@ -1,15 +1,16 @@
-var combConfig = require('./csscomb.json');
-// var StyleLintPlugin = require('stylelint-webpack-plugin');
+var combConfig = require('./csscombrc.json');
 
 module.exports = {
-  // parser: 'postcss-scss',
   plugins: {
+    'stylelint': {
+      configFile: './stylelintrc.json'
+    },
+    'postcss-reporter': { clearAllMessages: true },
+    'postcss-sorting': combConfig,
     'precss': {},
-    // 'postcss-flexbugs-fixes': {},
-    // 'postcss-csscomb': combConfig,
-    // new StyleLintPlugin({ configFile: xxx}),
+    'postcss-flexbugs-fixes': {},
     'css-mqpacker': { sort: true }, // trueにしないと先勝ソート
-    'autoprefixer': { browsers: 'last 2 version'}
-    // 'cssnano': {}
+    'autoprefixer': { browsers: 'last 2 version'},
+    'cssnano': {}
   }
 }

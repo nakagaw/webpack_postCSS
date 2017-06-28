@@ -1,14 +1,16 @@
 const webpack = require('webpack')
 const path = require('path')
+
+// css を別ファイルで dist
 const ExtractTextPlugin = require('extract-text-webpack-plugin') //読み込む
-const extractCSS = new ExtractTextPlugin({filename: '[name].bundle-[id].css', disable: false, allChunks: true }) //出力ファイル名:元ファイル名.bundle.css という名前になる
+const extractCSS = new ExtractTextPlugin({filename: './css/[name].bundle.css', disable: false, allChunks: true }) //出力ファイル名:元ファイル名.bundle.css という名前になる
 
 const config = {
   context: path.resolve(__dirname, 'src'),
-  entry: './app.js',
+  entry: './js/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: './js/[name].bundle.js'
   },
   module: {
     rules: [
@@ -34,31 +36,7 @@ const config = {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: 1 //css-loader の前に何個 loader を import するか
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  path: './postcss.config.js',
-                },
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: extractCSS.extract({
-          fallback: "style-loader", //CSSが抽出できないとき style-loader で head に
-          use: [ //使用するloaderを指定
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 3 //css-loader の前に何個 loader を import するか
+                importLoaders: 2 //css-loader の前に何個 loader を import するか
               }
             },
             {
@@ -71,22 +49,57 @@ const config = {
               }
             },
             {
-              loader: 'sass-loader',
+              loader: 'stylefmt-loader',
               options: {
-                sourceMap: true
+                config: './stylelintrc.json'
               }
             }
-            // ,
-            // {
-            //   loader: "stylefmt-loader",
-            //   options: {
-            //     config: "./csscomb.json"
-            //   }
-            // }
           ]
         })
       }
+      // ,
+      // {
+      //   test: /\.scss$/,
+      //   exclude: /node_modules/,
+      //   use: extractCSS.extract({
+      //     fallback: "style-loader", //CSSが抽出できないとき style-loader で head に
+      //     use: [ //使用するloaderを指定
+      //       {
+      //         loader: 'css-loader',
+      //         options: {
+      //           importLoaders: 3 //css-loader の前に何個 loader を import するか
+      //         }
+      //       },
+      //       {
+      //         loader: 'postcss-loader',
+      //         options: {
+      //           config: {
+      //             path: './postcss.config.js',
+      //           },
+      //           sourceMap: true
+      //         }
+      //       },
+      //       {
+      //         loader: 'sass-loader',
+      //         options: {
+      //           sourceMap: true
+      //         }
+      //       },
+      //       {
+      //         loader: 'stylefmt-loader',
+      //         options: {
+      //           config: './stylelintrc.json'
+      //         }
+      //       }
+      //     ]
+      //   })
+      // }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"), //root directly
+    compress: true, //qzip
+    port: 9000
   },
   devtool: 'source-map',
   plugins: [

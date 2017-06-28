@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": [ 4, {
+       "message": "インデントはスペース4つ！"
+    }],
+    "max-nesting-depth":  [ 4, {
+       "message": "ネストは4ぐらいでおさえとこう！"
+    }],
+    "declaration-no-important": [ true, {
+      "message": "!import はなるべくやめよう！"
+    }],
+
+    "scss/dollar-variable-pattern": [ "foo-", {
+      "message": "変数でfoo-はつかったらあかんで！"
+    }],
+
+  }
+}
+

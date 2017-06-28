@@ -1,5 +1,4 @@
 @import '_components/index.css';
-
 $blue: #056ef0;
 $column: 200px;
 
@@ -7,8 +6,8 @@ $column: 200px;
     padding-left: 16px;
 
     &::after {
-        content: "";
         background-url: url('/icons/$name.png');
+        content: "";
     }
 }
 
@@ -23,12 +22,12 @@ $column: 200px;
 .search {
     @mixin icon search;
     @extend bg-green;
-    color: $blue;
+    color: $blue !important;
 }
 
 .menu {
-    background: color($blue blackness(20%));
     width: calc(4 * $column);
+    background: color($blue blackness(20%));
 }
 
 .notice {
@@ -40,9 +39,10 @@ $column: 200px;
 }
 
 @for $i from 10 to 30 by 10 {
-    .col-$i { width: $i%; }
+    .col-$i {
+        width: $i%;
+    }
 }
-
 
 @each $icon in (foo, bar, baz) {
     .icon-$(icon) {
@@ -52,31 +52,49 @@ $column: 200px;
 
 @define-mixin ja {
     html[lang="ja"] & {
-        @mixin-content;
+        @mixin-content ;
     }
 }
 
 body {
-    background-color: red;
     @mixin ja {
         background-color: blue;
     }
+    background-color: red;
 }
 
 .parent {
-    background: white;
-
-    @at-root{
+    @at-root {
         .child {
             background: black;
         }
     }
-    .child {
+    background: white;
+
+    .child-1 {
         background: black;
+
+        .child-2 {
+            background: black;
+
+            .child-3 {
+                background: black;
+
+                .child-4 {
+                    background: black;
+
+                    .child-5 {
+                        background: black;
+                    }
+                }
+            }
+        }
     }
+
     &__child {
         background: black;
     }
+
     &__element {
         background: black;
 
@@ -87,59 +105,67 @@ body {
 }
 
 .heading {
-  font-weight: bold;
-  font-size: 60px;
-}
-h1 {
-  @extend .heading;
+    font-size: 60px;
+    font-weight: bold;
 }
 
+h1 {
+    @extend .heading;
+}
 
 .phone {
     &_title {
-        width: 500px;
         @media (max-width: 500px) {
             width: auto;
         }
+        width: 500px;
+
         body.is_dark & {
             color: white;
         }
     }
+
     img {
         display: block;
     }
 }
 
 @media (min-width: 640px) {
-  .foo {
-    width: 300px;
-  }
+    .foo {
+        width: 300px;
+    }
 }
 
 .content {
-    padding: 18px;
-    width: 400px;
-    border: solid 4px block;
-    height: 300px;
+    $blue: #056ef0;
+    $column: 200px;
     font-size: 40px;
-    background-color: white;
+    top: 4px;
+    top: 0;
+    width: 400px;
+    height: 300px;
     margin: 0 auto;
+    padding: 18px;
+    flex-basis: 1;
+    background-color: white;
+    border: solid 4px block;
+    color: pink;
 }
 
 .testcomb {
     font-size: 14px;
     line-height: 1.6;
-    vertical-align: middle;
-    white-space: nowrap;
-    background-color: red;
-    color: blue;
-    top: 2px;
-    background: white;
-    border: none;
-    background: none;
     position: relative;
+    top: 2px;
     bottom: 4px;
     margin: 4px 2px 4px 2px;
     padding: 0;
+    background: none;
+    background: white;
+    background-color: red;
+    border: none;
     border-radius: 3px;
+    color: blue;
+    vertical-align: middle;
+    white-space: nowrap;
 }
