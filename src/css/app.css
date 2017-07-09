@@ -2,6 +2,14 @@
 $blue: #056ef0;
 $column: 200px;
 
+.red {
+    color: red;
+}
+
+.blue {
+    color: $blue;
+}
+
 @define-mixin icon $name {
     padding-left: 16px;
 

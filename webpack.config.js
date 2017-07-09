@@ -1,9 +1,20 @@
 const webpack = require('webpack')
 const path = require('path')
 
+// html を別ファイルで dist
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const extractHTML = new HtmlWebpackPlugin({
+  filename: './index.html', //出力ファイル名
+  template: './template/index.ejs'
+})
+
 // css を別ファイルで dist
 const ExtractTextPlugin = require('extract-text-webpack-plugin') //読み込む
-const extractCSS = new ExtractTextPlugin({filename: './css/[name].bundle.css', disable: false, allChunks: true }) //出力ファイル名:元ファイル名.bundle.css という名前になる
+const extractCSS = new ExtractTextPlugin({
+  filename: './css/[name].bundle.css', //出力ファイル名:元ファイル名.bundle.css という名前になる
+  disable: false,
+  allChunks: true
+})
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -14,6 +25,28 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.ejs$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: {
+                // attrs: ["img:src", "link:href"],
+                // interpolate: true,
+                minimize: true,
+                // removeComments: false,
+                // collapseWhitespace: false
+            },
+          },
+          {
+            loader: 'ejs-html-loader',
+            options: {
+              title: 'Webpack init set',
+              // production: process.env.ENV === 'production'
+            }
+          }
+        ]
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -45,7 +78,7 @@ const config = {
                 config: {
                   path: './postcss.config.js',
                 },
-                sourceMap: true
+                // sourceMap: true
               }
             },
             {
@@ -99,10 +132,11 @@ const config = {
   devServer: {
     contentBase: path.join(__dirname, "dist"), //root directly
     compress: true, //qzip
-    port: 9000
+    port: 9999
   },
   devtool: 'source-map',
   plugins: [
+    extractHTML,
     extractCSS
   ]
 }
