@@ -27,6 +27,7 @@ const config = {
     rules: [
       {
         test: /\.ejs$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: "html-loader",
@@ -130,7 +131,7 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"), //root directly
+    contentBase: path.join(__dirname, 'dist'), //root directly
     compress: true, //qzip
     port: 9999
   },
@@ -138,7 +139,13 @@ const config = {
   plugins: [
     extractHTML,
     extractCSS
-  ]
+  ],
+  // resolve: {
+  //   extensions: ['*', '.js', '.css', '.scss'],
+  //   alias: {
+  //     'sanitize': path.join(__dirname, '/node_modules/sanitize.css/sanitize.css') //postcss-partial-importと相性悪し
+  //   }
+  // }
 }
 
 module.exports = config
