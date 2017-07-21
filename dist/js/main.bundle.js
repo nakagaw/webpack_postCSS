@@ -93,31 +93,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 "use strict";
 
 
+document.addEventListener("DOMContentLoaded", testXXX.XYZ, false);
 var testXXX = function XYZ() {
     return alert("Hello world XXX");
 };
-document.addEventListener("DOMContentLoaded", testXXX.XYZ, false);
 
-console.log(testXXX.XYZ());
-// function testZZZ() {
-//     return alert("Hello world ZZZ");
-// }
+document.addEventListener("DOMContentLoaded", testZZZ, false);
+function testZZZ() {
+    return alert("Hello world ZZZ");
+}
 
-// document.addEventListener( "DOMContentLoaded", testXXX, false);
-// document.addEventListener( "DOMContentLoaded", testZZZ, false);
+document.addEventListener("DOMContentLoaded", testXXX, false);
 
+var windowWidth = Window.innerHeight;
+var windowHeight = Window.innerWidth;
 
-// ver windowWidth = document.getElementsById('window-size-width')
-// ver windowHeight = document.getElementsById('window-size-height')
+// var windowWidthDOM = document.getElementsById('window-size-width')
+// var windowHeightDOM = document.getElementsById('window-size-height')
 
-// ver windowWidthDOM = document.getElementsById('window-size-width')
-// ver windowHeightDOM = document.getElementsById('window-size-height')
-
-// ver windowSize = function () {
+// var windowSize = function () {
 //     console.log(windowWidth + 'px x' + windowHeight + 'px');
 // }
 
-// console.log(windowWidth + 'px x' + windowHeight + 'px');
+console.log(windowWidth + 'px x' + windowHeight + 'px');
 
 /***/ })
 /******/ ]);

@@ -21,6 +21,7 @@ const config = {
   entry: './js/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    // publicPath: "../",
     filename: './js/[name].bundle.js'
   },
   module: {
@@ -93,6 +94,7 @@ const config = {
         exclude: /node_modules/,
         use: extractCSS.extract({
           fallback: "style-loader", //CSSが抽出できないとき style-loader で head に
+          publicPath: "../", //background-imageを相対パスにするため
           use: [ //使用するloaderを指定
             {
               loader: 'css-loader',
@@ -124,6 +126,7 @@ const config = {
       //   exclude: /node_modules/,
       //   use: extractCSS.extract({
       //     fallback: "style-loader", //CSSが抽出できないとき style-loader で head に
+      //     publicPath: "../", //background-imageを相対パスにするため
       //     use: [ //使用するloaderを指定
       //       {
       //         loader: 'css-loader',
