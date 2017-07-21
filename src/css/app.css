@@ -13,20 +13,20 @@
 }
 
 .header {
-    background: turquoise;
+    background: turquoise url(/images/Dominque.png);
 
     &__title {
     }
 }
 
 .content {
-    background: white;
+    background: lime;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 .main {
-    background: white;
+    background: white url(/images/Russell.png);
 }
 
 .sub {

@@ -49,6 +49,30 @@ const config = {
         ]
       },
       {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader?name=[path][name].[ext]',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              mozjpeg: {
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: true,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              }
+            }
+          }
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
@@ -58,6 +82,9 @@ const config = {
             options: {
               presets: ['es2015']
             }
+          },
+          {
+            loader: 'eslint-loader'
           }
         ]
       },

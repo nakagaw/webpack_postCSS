@@ -74,6 +74,10 @@ var _app = __webpack_require__(1);
 
 var _app2 = _interopRequireDefault(_app);
 
+var _utils = __webpack_require__(2);
+
+var _utils2 = _interopRequireDefault(_utils);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
@@ -81,6 +85,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var testXXX = function XYZ() {
+    return alert("Hello world XXX");
+};
+document.addEventListener("DOMContentLoaded", testXXX.XYZ, false);
+
+console.log(testXXX.XYZ());
+// function testZZZ() {
+//     return alert("Hello world ZZZ");
+// }
+
+// document.addEventListener( "DOMContentLoaded", testXXX, false);
+// document.addEventListener( "DOMContentLoaded", testZZZ, false);
+
+
+// ver windowWidth = document.getElementsById('window-size-width')
+// ver windowHeight = document.getElementsById('window-size-height')
+
+// ver windowWidthDOM = document.getElementsById('window-size-width')
+// ver windowHeightDOM = document.getElementsById('window-size-height')
+
+// ver windowSize = function () {
+//     console.log(windowWidth + 'px x' + windowHeight + 'px');
+// }
+
+// console.log(windowWidth + 'px x' + windowHeight + 'px');
 
 /***/ })
 /******/ ]);
